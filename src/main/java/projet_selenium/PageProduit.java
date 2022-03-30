@@ -6,9 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class PageAngelFish extends BandeauMenu {
+public class PageProduit extends BandeauMenu {
 	
-	public PageAngelFish(WebDriver driver) {
+	public PageProduit(WebDriver driver) {
 
 		super();
 	}

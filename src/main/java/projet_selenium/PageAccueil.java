@@ -11,9 +11,6 @@ public class PageAccueil extends BandeauMenu {
 
 		super();
 	}
-
-	@FindBy(xpath = "//div[@id='MenuContent']/a[contains(@href, 'signonForm')]")
-	public WebElement signIn;
 	
 	@FindBy(xpath = "//div[@id='MenuContent']/a[contains(@href, 'signoff')]")
 	public WebElement signOut;
@@ -30,10 +27,10 @@ public class PageAccueil extends BandeauMenu {
 	@FindBy(xpath = "//a[@href=\"/actions/Account.action?editAccountForm=\"]")
 	public WebElement linkMyAccount;
 	
-	public PageLogin clickSingInButton(WebDriver driver) {
+	/*public PageLogin clickSingInButton(WebDriver driver) {
 		signIn.click();
 		return PageFactory.initElements(driver, PageLogin.class);
-	}
+	}*/
 
 	public PageTypeProduit chooseFishInMenu(WebDriver driver) {
 		optionFish.click();
@@ -45,5 +42,4 @@ public class PageAccueil extends BandeauMenu {
 		linkMyAccount.click();
 		return PageFactory.initElements(driver, MyAccount.class);
 	}
-	
 }

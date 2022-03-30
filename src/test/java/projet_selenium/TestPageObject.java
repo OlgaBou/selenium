@@ -1,13 +1,18 @@
 package projet_selenium;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
+import java.io.FileInputStream;
+import java.util.Properties;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -56,7 +61,9 @@ public class TestPageObject {
 
 	@Test
 	
-	public void testPageObj() {
+	public void testPageObj() throws Exception {
+		
+		 
 		
 		wait = new WebDriverWait(driver, 15);
 		driver.get("https://petstore.octoperf.com/");
@@ -73,7 +80,7 @@ public class TestPageObject {
 		Logger.info("******Etap 2 - Affichage de la Page Accueil******");
 		
 		// appel de la méthode "clickSingInButton" --> instanciation de la PageLogin
-		PageLogin page_login = page_accueil.clickSingInButton(driver);
+		PageLogin page_login = page_accueil.clickOnSignIn(driver);
 		wait.until(ExpectedConditions.visibilityOf(page_login.username_field));
 		
 		Logger.info("******Etap 3 - Affichage de la Page Login******");
@@ -92,14 +99,14 @@ public class TestPageObject {
 		//assertEquals("Fish", driver.findElement(By.xpath("//div[@id='Catalog']/h2[.='Fish']")).getText());
 		
 		// appel de la méthode "clickTypeFish" --> instanciation de la PageAngelFish
-		PageAngelFish page_angel_fish = page_type_produit.clickTypeFish(driver);
+		PageProduit page_produit = page_type_produit.clickTypeFish(driver);
 		
 		Logger.info("******Etap 6 - Affichage de la Page AngelFish******");
-		wait.until(ExpectedConditions.visibilityOf(page_angel_fish.titreAngelFish));
+		wait.until(ExpectedConditions.visibilityOf(page_produit.titreAngelFish));
 		//assertEquals("Angelfish", driver.findElement(By.xpath("//div[@id='Catalog']/h2[.='Angelfish']")).getText());
 		
 		// appel de la méthode "clickAddToCart" --> instanciation de la PagePanier
-		PagePanier page_panier = page_angel_fish.clickAddToCart(driver);
+		PagePanier page_panier = page_produit.clickAddToCart(driver);
 		
 		Logger.info("******Etap 7 - Affichage de la Page Panier******");
 		assertEquals("Shopping Cart",
@@ -138,9 +145,12 @@ public class TestPageObject {
 		
 		Logger.info("Language affichée : " + page_my_account.choixLang.getAttribute("value"));
 		
+		
 		page_my_account.chooseReptiles();
 		
 		Logger.info("Animal affiché : " + page_my_account.choixAnimal.getAttribute("value"));
+		
+		assertTrue(page_my_account.verifSelect());
 		
 		/*if(!page_my_account.enableMyList.isSelected())
 			page_my_account.enableMyList.click();
@@ -149,12 +159,26 @@ public class TestPageObject {
 			page_my_account.enableMyBanner.click();*/
 		
 		Logger.info("The checkbox My List selection state is - " + page_my_account.enableMyList.isSelected());
+		assertTrue(page_my_account.enableMyList.isSelected());
 		Logger.info("The checkbox My Banner selection state is - " + page_my_account.enableMyBanner.isSelected());
+		assertTrue(page_my_account.enableMyBanner.isSelected());
 		
 		page_my_account.deselectCheckbox();
 		
-		
 		Logger.info("The checkbox My List selection state is - " + page_my_account.enableMyList.isSelected());
+		
+		assertFalse(page_my_account.enableMyList.isSelected());
+		
+		page_my_account.returnToMainMenuLogo(driver);
+		
+		ResultatRecherche resultat_recherche = page_accueil.findDog(driver);
+		
+		resultat_recherche.countNumberRows();
+		resultat_recherche.countNumberColumns();
+		
+		resultat_recherche.findCellINeed(2, 2);
+		
+		resultat_recherche.clickElem();
 	}
 	
 }

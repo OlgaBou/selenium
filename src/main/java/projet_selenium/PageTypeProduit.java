@@ -18,8 +18,8 @@ public class PageTypeProduit extends BandeauMenu {
 	@FindBy(xpath = "//div[@id='Catalog']/h2[.='Fish']")
 	public WebElement titreFish;
 	
-	public PageAngelFish clickTypeFish(WebDriver driver) {
+	public PageProduit clickTypeFish(WebDriver driver) {
 		typeFish.click();
-		return PageFactory.initElements(driver, PageAngelFish.class);
+		return PageFactory.initElements(driver, PageProduit.class);
 	}
 }
