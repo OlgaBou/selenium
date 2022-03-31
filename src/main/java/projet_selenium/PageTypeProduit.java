@@ -9,7 +9,7 @@ public class PageTypeProduit extends BandeauMenu {
 	
 	public PageTypeProduit(WebDriver driver) {
 
-		super();
+		super(driver);
 	}
 	
 	@FindBy(xpath = "//a[@href='/actions/Catalog.action?viewProduct=&productId=FI-SW-01']")

@@ -11,7 +11,7 @@ public class PagePanier extends BandeauMenu {
 
 	public PagePanier(WebDriver driver) {
 
-		super();
+		super(driver);
 	}
 	
 	@FindBy(xpath = "//input[@size='3']")

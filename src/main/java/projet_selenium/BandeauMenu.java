@@ -9,6 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 public abstract class BandeauMenu {
 
 	public WebDriver driver;
+	
+	public BandeauMenu(WebDriver driver) {
+		this.driver=driver;
+	}
 
 	@FindBy(xpath = "//input[@type='text']")
 	public WebElement search_field;
@@ -37,5 +41,15 @@ public abstract class BandeauMenu {
 		
 		logo.click();
 		return PageFactory.initElements(driver, PageAccueil.class);
+	}
+	
+	public boolean verifPage(WebElement nomWebEl) {
+		boolean verif;
+		if (nomWebEl.isDisplayed()) {
+			verif = true;
+		} else {
+			verif = false;
+		}
+		return verif;
 	}
 }

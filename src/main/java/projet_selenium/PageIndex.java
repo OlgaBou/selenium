@@ -9,7 +9,7 @@ public class PageIndex extends BandeauMenu {
 	
 	public PageIndex(WebDriver driver) {
 
-		super();
+		super(driver);
 	}
 
 	@FindBy (xpath="//a[@href='actions/Catalog.action']")

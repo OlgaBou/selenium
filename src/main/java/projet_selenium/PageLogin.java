@@ -7,6 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 
 public class PageLogin extends BandeauMenu {
 
+	public PageLogin(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
 	@FindBy(xpath = "//input[@name='username']")
 	public WebElement username_field;
 	@FindBy(xpath = "//input[@name='password']")

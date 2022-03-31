@@ -63,7 +63,6 @@ public class TestPageObject {
 	
 	public void testPageObj() throws Exception {
 		
-		 
 		
 		wait = new WebDriverWait(driver, 15);
 		driver.get("https://petstore.octoperf.com/");
@@ -173,12 +172,17 @@ public class TestPageObject {
 		
 		ResultatRecherche resultat_recherche = page_accueil.findDog(driver);
 		
-		resultat_recherche.countNumberRows();
-		resultat_recherche.countNumberColumns();
+		assertTrue(resultat_recherche.verifPage(resultat_recherche.resultat));
 		
-		resultat_recherche.findCellINeed(2, 2);
+		//resultat_recherche.countNumberRows();
+		//resultat_recherche.countNumberColumns();
 		
-		resultat_recherche.clickElem();
+		resultat_recherche.retournerNumeroDeLigne("Bulldog");
+		resultat_recherche.findCellINeed(2, "Bulldog");
+		
+		resultat_recherche.clickElem(2, "Bulldog");
+		
+		assertTrue(page_produit.verifPage(page_produit.titreBulldog));
 	}
 	
 }

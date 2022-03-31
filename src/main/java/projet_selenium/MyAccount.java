@@ -9,7 +9,7 @@ public class MyAccount extends BandeauMenu {
 
 	public MyAccount(WebDriver driver) {
 
-		super();
+		super(driver);
 	}
 
 	@FindBy(xpath = "//h3[contains(.,'User Information')]")

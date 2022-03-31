@@ -9,7 +9,7 @@ public class PageAccueil extends BandeauMenu {
 
 	public PageAccueil(WebDriver driver) {
 
-		super();
+		super(driver);
 	}
 	
 	@FindBy(xpath = "//div[@id='MenuContent']/a[contains(@href, 'signoff')]")

@@ -10,7 +10,7 @@ public class PageProduit extends BandeauMenu {
 	
 	public PageProduit(WebDriver driver) {
 
-		super();
+		super(driver);
 	}
 	
 	@FindBy(xpath = "//a[@href='/actions/Cart.action?addItemToCart=&workingItemId=EST-1']")
@@ -18,6 +18,9 @@ public class PageProduit extends BandeauMenu {
 	
 	@FindBy(xpath = "//div[@id='Catalog']/h2[.='Angelfish']")
 	public WebElement titreAngelFish;
+	
+	@FindBy(xpath = "//div[@id='Catalog']/h2[.='Bulldog']")
+	public WebElement titreBulldog;
 	
 	public PagePanier clickAddToCart(WebDriver driver) {
 	
